@@ -1,0 +1,35 @@
+<div>
+  <alert type="{{alertType}}" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</alert>
+</div>
+<form role="form" name="htmlForm">
+  <div class="container" ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">{{titleForm}}</h3>
+      *Campos obligatorios
+    </div>
+    <div class="form-group" >
+      <label for="formObject.reminder_date" class="col-sm-3 control-label">Fecha de recordatorio:</label>
+      <div class="col-sm-9 scp-row" > 
+          <div class="row">
+            <div class="col-md-6">
+              <p class="input-group">
+                <input required type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" ng-model="formObject.reminder_date" is-open="opened" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </p>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-group ">
+      <label for="formObject.notes" class="col-sm-3">Notas:</label>
+      <div class="col-sm-9 scp-row"><textarea class="form-control notesBox" id="formObject.notes" ng-model="formObject.notes" ng-maxlength="2000" placeholder="Escriba aquí lo que desea que se le recuerde" required></textarea></div>
+    </div>
+    <div class="form-group text-right">
+      <div class="col-sm-12 scp-row">
+        <button class="btn btn-default" ng-click="reset()" ng-show="formObject && formObject.id"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+        <button class="btn btn-default" ng-click="save(formObject)"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button></div>
+    </div>
+  </div>
+</form>

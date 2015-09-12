@@ -1,0 +1,39 @@
+<form role="form" name="htmlForm">
+  <div class="container" ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">{{titleForm}}</h3>
+      *Campos obligatorios
+    </div>
+    <div class="form-group">
+      <label for="formObject.profile" class="col-sm-3 control-label">*Perfil:</label>
+      <div class="col-sm-9 scp-row" ><select class="form-control" id="formObject.profile" ng-model="formObject.profile" required ng-change="userBaseSelection()">
+        <option value="">Seleccione un perfil</option>
+        <option value="1">Caja</option>
+        <option value="2">Recepción</option>
+        <option value="3">Ayudante general</option>
+        <option value="4">Doctor asociado</option>
+        <option value="5">Paciente</option>
+        <option value="6">Doctor a cargo</option>
+      </select></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.name" class="col-sm-3 control-label">*Nombre completo:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.name" ng-model="formObject.name" ng-maxlength="100" placeholder="Nombre completo" ng-disabled="formObject.idExternalEntity > 0" required/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.email" class="col-sm-3 control-label">*Correo electrónico:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.email" ng-model="formObject.email" ng-maxlength="150" placeholder="Correo electrónico" required/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.phone_number" class="col-sm-3 control-label">Teléfono:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.phone_number" ng-model="formObject.phone_number" ng-maxlength="100" placeholder="XXXXXXXXXX"/></div>
+    </div>
+    <div class="form-group text-right">
+        <div class="col-sm-12 scp-row">
+          <button class="btn btn-default" ng-click="reset()" ng-show="formObject && formObject.id" ng-disabled="working"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+          <button class="btn btn-default" ng-click="save(formObject)" ng-disabled="working"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button></div>
+      </div>
+    </div>
+</form>
+
+

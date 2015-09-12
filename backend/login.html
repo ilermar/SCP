@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+    <link href="css/main.css" rel="stylesheet">
+
+	<title>Api para el SCP</title>
+</head>
+<body>
+	<section>
+		<div class="half">
+			<article>
+				Ejemplo de usuarios
+				<input type="text" class="params">
+				<button id="user_getAll">Get All</button>
+				<button id="user_get">Get</button>
+				<button id="user_post">Post</button>
+				<button id="user_put">Put</button>
+				<button id="user_delete">Delete</button>
+			</article>
+			<!--
+			<article>
+				Ejemplo de pacientes
+				<input type="text" class="params">
+				<button>Get All</button>
+				<button>Get</button>
+				<button>Post</button>
+				<button>Delete</button>
+			</article>
+			<article>
+				Ejemplo de estudios
+				<input type="text" class="params">
+				<button>Get All</button>
+				<button>Get</button>
+				<button>Post</button>
+				<button>Delete</button>
+			</article> -->
+		</div>
+		<div class="half" id="result">
+			<!-- Aquí se mostraran lso resultados de las peticiones-->
+			<div class="url">
+				URL: <span></span>
+			</div>
+			<div class="data">
+				Ejemplo de petición
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

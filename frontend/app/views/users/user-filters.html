@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="formheader">
+    <h3 class=""><span ng-click="filterSelection=true" ng-show="!filterSelection" class="btn btn-default glyphicon glyphicon-filter"></span>&nbsp;{{titleForm}}</h3>
+    Use los filtros para simplicar su búsqueda. Ningún filtro es obligatorio
+  </div>
+    <div ng-show="filterSelection">
+        <form role="form">
+          <div class="form-group">
+            <label for="formObject.profile" class="col-sm-3 control-label">Perfil:</label>
+            <div class="col-sm-9 scp-row" ><select class="form-control" id="formObject.profile" name="formObject.profile" ng-model="formObject.profile">
+              <option value="">Seleccione un perfil</option>
+              <option value="1">Caja</option>
+              <option value="2">Recepción</option>
+              <option value="3">Ayudante general</option>
+              <option value="4">Doctor asociado</option>
+              <option value="5">Paciente</option>
+              <option value="6">Doctor a cargo</option>
+            </select></div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Nombre completo:</label>
+            <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.name" name="formObject.name" ng-model="formObject.name" placeholder="Nombre completo"/></div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Correo electrónico:</label>
+            <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.email" name="formObject.email" ng-model="formObject.email" placeholder="Correo electrónico"/></div>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber" class="col-sm-3 control-label">Teléfono:</label>
+            <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.phone_number" name="formObject.phoneNumber" ng-model="formObject.phoneNumber" placeholder="XXXXXXXXXX"/></div>
+          </div>
+          
+          <div class="form-group text-right">
+              <div class="col-sm-12 scp-row"><button ng-click="search(formObject)" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+          </div>
+        </form>
+      </div>
+      <div ng-show="!filterSelection && !working">
+          <div class=" panel panel-default" >
+              <table  class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Nombre</th>
+                          <th>Correo electrónico</th>
+                          <th>Perfil</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr cursor="pointer" ng-class="{selected: row.id === selectedObject.id}" ng-repeat="row in objectList" ng-click="selectObject(row)" ng-dblclick="edit(row.id)">
+                          <td>{{row.name}}</td>
+                          <td>{{row.email}}</td>
+                          <td>{{formInstance.getProfileName(row.profile)}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="form-group" ng-show="selectedObject.id">
+              <div class="col-sm-12 scp-row text-right">
+                <button ng-click="delete(formObject, selectedObject.id, 'Eliminar usuario', ' (' + selectedObject.name + ')'  )" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>&nbsp;Eliminar</button>
+                <button ng-click="edit(selectedObject.id)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Editar</button>
+              </div>
+          </div>
+      </div>
+</div>

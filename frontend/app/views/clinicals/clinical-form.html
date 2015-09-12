@@ -1,0 +1,79 @@
+<form role="form" name="htmlForm">
+  <div class="container" ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">{{titleForm}}</h3>
+      *Campos obligatorios
+    </div>
+    <div class="form-group">
+      <label for="formObject.name" class="col-sm-3 control-label">*Nombre:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.name" ng-model="formObject.name" ng-maxlength="100" placeholder="Nombre " required/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.address" class="col-sm-3 control-label">Dirección:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.address" ng-model="formObject.address" ng-maxlength="300" placeholder="Colonia, calle y número"/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.city" class="col-sm-3 control-label">Ciudad:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.city" ng-model="formObject.city" ng-maxlength="100" placeholder="Ciudad"/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.state" class="col-sm-3 control-label">Estado:</label>
+      <div class="col-sm-9 scp-row" ><select class="form-control" id="formObject.state" ng-model="formObject.state">
+        <option value="">Seleccione un estado</option>
+        <option value="1">Aguasacalientes</option>
+        <option value="2">Baja California Sur</option>
+        <option value="3">Baja California Norte</option>
+        <option value="4">Campeche</option>
+        <option value="5">Chiapas</option>
+        <option value="6">Chihuahua</option>
+        <option value="7">Coahuila</option>
+        <option value="8">Colima</option>
+        <option value="9">Distrito Federal</option>
+        <option value="10">Durango</option>
+        <option value="11">Estado de México</option>
+        <option value="12">Guanajuato</option>
+        <option value="13">Guerrero</option>
+        <option value="14">Hidalgo</option>
+        <option value="15">Jalisco</option>
+        <option value="16">Michoacán</option>
+        <option value="17">Morelos</option>
+        <option value="18">Nayarit</option>
+        <option value="19">Nuevo León</option>
+        <option value="20">Oaxaca</option>
+        <option value="21">Puebla</option>
+        <option value="22">Querétaro</option>
+        <option value="23">Quintana Roo</option>
+        <option value="24">San Luis Potosí</option>
+        <option value="25">Sinaloa</option>
+        <option value="26">Sonora</option>
+        <option value="27">Tabasco</option>
+        <option value="28">Tamaulipas</option>
+        <option value="29">Tlaxcala</option>
+        <option value="30">Veracruz</option>
+        <option value="31">Yucatán</option>
+        <option value="32">Zacatecas</option>
+      </select></div>
+    </div>
+     <div class="form-group">
+      <label for="formObject.phone_number" class="col-sm-3 control-label">Teléfono:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.phone_number" ng-model="formObject.phone_number" ng-maxlength="15" placeholder=""/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.fax" class="col-sm-3 control-label">Fax:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.fax" ng-model="formObject.fax" ng-maxlength="15" placeholder="XXXXXXXXXX"/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.email" class="col-sm-3 control-label">Correo electrónico:</label>
+      <div class="col-sm-9 scp-row" ><input type="email" class="form-control" id="formObject.email" ng-model="formObject.email" ng-maxlength="150" placeholder="clinica@dominio.com"/></div>
+    </div>
+    <div class="form-group ">
+      <label for="formObject.notes" class="col-sm-3">Notas:</label>
+      <div class="col-sm-9 scp-row"><textarea type="text" class="form-control notesBox" id="formObject.notes" ng-model="formObject.notes" ng-maxlength="1000" placeholder="Notas relacionadas a la clínica"></textarea></div>
+    </div>
+    <div class="form-group text-right">
+      <div class="col-sm-12 scp-row">
+        <button class="btn btn-default" ng-click="reset()" ng-show="formObject && formObject.id" ng-disabled="working"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+        <button class="btn btn-default" ng-click="save(formObject)" ng-disabled="working"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button></div>
+    </div>
+  </div>
+</form>

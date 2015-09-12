@@ -1,0 +1,114 @@
+<div>
+  <alert type="{{alertType}}" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</alert>
+</div>
+<div class="container">
+    <div class="formheader">
+      <h3 class=""><span ng-click="filterSelection=true" ng-show="!filterSelection" class="btn btn-default glyphicon glyphicon-filter"></span>&nbsp;BUSCAR ESTUDIOS</h3>
+      Use los filtros para simplicar su búsqueda. Ningún filtro es obligatorio
+    </div>
+    <div ng-show="filterSelection">
+        <form role="form">
+          <div class="form-group ">
+             <label class="col-sm-3 control-label" for="formObject.key_prefix">Clave de estudio:</label>
+             <div class="col-sm-2 scp-row"><input type="text" class="form-control" id="formObject.key_prefix" ng-model="formObject.key_prefix" placeholder="Prefijo"/></div>
+             <div class="col-sm-7 scp-row"><input type="text" class="form-control" id="formObject.key_number" ng-model="formObject.key_number" placeholder="Número de estudio"/></div>
+          </div>
+          <div class="form-group ">
+            <label for="formObject.register_date_start" class="col-sm-3 control-label ">Fecha de registro:</label>
+                  <div class="scp-row">
+                    <div class="col-sm-9 scp-row" >
+                      <div class="row">
+                        <div class="col-md-7">
+                          <p class="input-group">
+                            <span class="input-group-btn">
+                              <span class="btn disabled">&nbsp;Entre&nbsp;</span> 
+                            </span> 
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" ng-model="formObject.register_date_start" id="formObject.register_date_start" is-open="calendar_0" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="openCalendar($event, 0)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                            </span> 
+                            <span class="input-group-btn">
+                              <span class="btn disabled">&nbsp;y&nbsp;</span> 
+                            </span> 
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" id="formObject.register_date_end" ng-model="formObject.register_date_end" is-open="calendar_1" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="openCalendar($event, 1)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                            </span> 
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+          <div class="form-group">
+            <label for="formObject.patient_name" class="col-sm-3 control-label">Paciente:</label>
+            <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.patient_name" ng-model="formObject.patient_name" placeholder="Nombre del paciente"/></div>
+          </div>
+          <div class="form-group ">
+            <label for="formObject.doctor_name" class="col-sm-3 control-label ">Doctor:</label>
+             <div class="col-sm-9 scp-row"><input type="text" class="form-control" id="formObject.doctor_name" ng-model="formObject.doctor_name" placeholder="Nombre del doctor"/></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label ">Tipo de estudio:</label>
+            <div class="checkbox col-sm-9 scp-row">
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_0" ng-change="updateType(mainStudyType_0, 1, 65534)"/>Citología</label></div>
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_1" ng-change="updateType(mainStudyType_1, 2, 65533)"/>Androscopía</label></div>
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_2" ng-change="updateType(mainStudyType_2, 4, 65531)"/>Colposcopía</label></div>
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_3" ng-change="updateType(mainStudyType_3, 8, 65527)"/>Histeroscopía</label></div>
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_4" ng-change="updateType(mainStudyType_4, 16, 65519)"/>Histopatología</label></div>
+              <div class="col-sm-4"><label><input type="checkbox" ng-model="mainStudyType_5" ng-change="updateType(mainStudyType_5, 32, 65503)"/>Especiales</label></div>
+           </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-sm-3">Dr. a cargo:</label>
+            <div class="col-sm-9 scp-row">
+              <select class="form-control" id="formObject.main_doctor" ng-model="formObject.main_doctor" ng-options="value.id as value.name for value in owners"  >
+              </select>
+            </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-sm-3">Estatus:</label>
+            <div class="col-sm-9 scp-row"><select class="form-control" id="status" name="status">
+                <option value="0">Todos</option>
+                <option value="1">Sin diagnóstico</option>
+                <option value="2">Firmados</option>
+            </select></div>
+          </div>
+          <div class="form-group text-right">
+                <div class="col-sm-12 scp-row"><button ng-click="search(formObject)" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+
+          </div>
+        </form>
+      </div>
+      <div ng-show="!filterSelection && !working">
+          <div class=" panel panel-default" >
+              <table  class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Clave de estudio</th>
+                          <th>Fecha de registro</th>
+                          <th>Tipo</th>
+                          <th>Paciente</th>
+                          <th>Doctor</th>
+                          <th>Estatus</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr cursor="pointer" ng-class="{selected: row.id === selectedObject.id}" ng-repeat="row in objectList" ng-click="selectObject(row)" ng-dblclick="edit(row.id)">
+                          <td>{{row.key_prefix}}-{{row.key_number | zpad:4}}</td>
+                          <td>{{row.register_date}}</td>
+                          <td>{{getStudyName(row.type)}}</td>
+                          <td>{{row.patient_name}}</td>
+                          <td>{{row.doctor_name}}</td>
+                          <td>{{getStatusName(row.status)}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="form-group" ng-show="selectedObject && selectedObject.id">
+              <div class="col-sm-12 scp-row text-right">
+                <button ng-click="edit(selectedObject.id)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Editar</button>
+              </div>
+          </div>
+      </div>
+</div>

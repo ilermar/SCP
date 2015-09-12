@@ -1,0 +1,310 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>.:: S.C.P.::.</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">    
+    <link rel="stylesheet" href="styles/textAngular.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+  </head>
+  <body ng-app="scpApp" ng-init="">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container" >
+      <div class="header">
+        <div class="system-logo">
+          <img src="images/logo.png" />
+          <div class="system-title">
+            <h3 class="text-muted">Sistema de control de pacientes</h3>
+            <h6 class="text-muted">Dr. Sergio Ramos Reyes / Dr. Paris Ramos Martínez</h6>
+          </div>
+        </div>
+        <div class="zagon-logo"><img src="images/whitelogo.png" /></div>
+      </div>
+      <div class="content">
+        <div id="SystemMenu" ng-show="(currentUser) ? true : false">
+          <!--accordion-group heading="Inicio">
+            </accordion-group-->
+          <accordion close-others="true" >
+            <div class="sessionblock">
+            <span class="glyphicon glyphicon-user"></span>&nbsp;<span ng-bind="currentUser.fullName"></span> | <span><a href="" ng-click="closeSession()">Cerrar sesi&oacute;n</a></span>
+            <img ng-if="dataFormLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+          </div>
+            <a class="list-group-item btn btn-default" href="#/main"><span class="glyphicon glyphicon-home"></span>&nbsp;Inicio</a>
+            <br/>
+            <accordion-group heading="Estudios" is-open="studies.open">
+              <accordion-heading>
+              Estudios<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': studies.open, 'glyphicon-chevron-right': !studies.open}"></i>
+              </accordion-heading>
+                <p><a class="text-mute" href="#/startstudy"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nuevo</a></p>
+                <p><a href="#/searchstudy"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p><!--
+                <p><a href="#/citotemplates"><span class="glyphicon glyphicon-star-empty" ></span>&nbsp;Machotes citológicos</a></p>-->
+              
+            </accordion-group>
+            <accordion-group is-open="patients.open">
+              <accordion-heading>
+              Pacientes<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': patients.open, 'glyphicon-chevron-right': !patients.open}"></i>
+              </accordion-heading>
+                <p><a href="#/newpatient"><span class="glyphicon glyphicon-plus" ></span>&nbsp;Nuevo</a></p>
+                <p><a href="#/searchpatient"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p>
+            </accordion-group >
+            <accordion-group is-open="doctors.open">
+              <accordion-heading>
+              Doctores<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': doctors.open, 'glyphicon-chevron-right': !doctors.open}"></i>
+              </accordion-heading>
+              <p><a href="#/newdoctor"><span class="glyphicon glyphicon-plus" ></span>&nbsp;Nuevo</a></p>
+              <p><a href="#/searchdoctor"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p>
+            </accordion-group>
+            <accordion-group is-open="clinicals.open">
+              <accordion-heading>
+              Cl&iacute;nicas<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': clinicals.open, 'glyphicon-chevron-right': !clinicals.open}"></i>
+              </accordion-heading>
+              <p><a href="#/newclinical"><span class="glyphicon glyphicon-plus" ></span>&nbsp;Nueva</a></p>
+              <p><a href="#/searchclinical"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p>
+            </accordion-group>
+            <accordion-group is-open="users.open">
+              <accordion-heading>
+              Usuarios<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': users.open, 'glyphicon-chevron-right': !users.open}"></i>
+              </accordion-heading>
+              <p><a href="#/newuser"><span class="glyphicon glyphicon-plus" ></span>&nbsp;Nuevo</a></p>
+              <p><a href="#/searchuser"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p>
+            </accordion-group>
+            <accordion-group is-open="reminders.open">
+              <accordion-heading>
+              Recordatorios<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': reminders.open, 'glyphicon-chevron-right': !reminders.open}"></i>
+              </accordion-heading>
+              <p><a href="#/newreminder"><span class="glyphicon glyphicon-plus" ></span>&nbsp;Nuevo</a></p>
+              <p><a href="#/searchreminder"><span class="glyphicon glyphicon-search" ></span>&nbsp;Consulta</a></p>
+            </accordion-group>
+            <accordion-group is-open="settings.open">
+              <accordion-heading>
+              Configuración<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': settings.open, 'glyphicon-chevron-right': !settings.open}"></i>
+              </accordion-heading>
+              <p><a href="#/mailserver"><span class="glyphicon glyphicon-envelope" ></span>&nbsp;Servidor de correo</a></p>
+              <p><a href="#/changepwd"><span class="glyphicon glyphicon-warning-sign" ></span>&nbsp;Cambiar contraseña</a></p>
+            </accordion-group>
+            <accordion-group is-open="system.open">
+              <accordion-heading>
+              Sistema<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': system.open, 'glyphicon-chevron-right': !system.open}"></i>
+              </accordion-heading>
+              <p><a href="#/about">Acerca de</a></p>
+              <p><a href="#/contact">Contacto</a></p>
+            </accordion-group>
+          </accordion>
+        </div>
+        <div class="systemAlertContainer">
+          <alert type="{{alertType}}" close="closeAlert()" ng-show="showAlert" ng-bind-html="serverMessage"></alert>
+        </div>
+        <div class="mainview" ng-view="" ng-show="(currentUser) ? true : false"></div>
+    </div>
+  </div>
+
+  <div ng-show="!currentUser">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <h2 class="text-center login-title">Iniciar sesión</h2>
+
+        <form name="form" ng-submit="login()" role="form">
+            <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <i class="fa fa-key"></i>
+                <input type="text" name="username" id="username" class="form-control" ng-model="username" ng-disabled="dataLoading" required />
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Nombre de usuario es requerido</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <i class="fa fa-lock"></i>
+                <input type="password" name="password" id="password" class="form-control" ng-model="password" ng-disabled="dataLoading" required />
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Contraseña es requerida</span>
+            </div>
+            <div>
+              <alert type="{{loginAlertType}}" close="showLoginAlert = false;" ng-show="showLoginAlert">{{loginMessage}}</alert>
+            </div>
+            <div class="form-actions">
+                <label class="forgot-password" ng-click="recoverPassword()">¿Olvido su contraseña?</label>
+                <div class="button-login">
+                  <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-default" ng-click="login()">Entrar</button>
+                  <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+  </div>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/ui-bootstrap-tpls-0.12.0.min.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
+        <script src="scripts/controllers/simpleform.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/dialogs.js"></script>
+        <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/studies.js"></script>
+        <script src="scripts/controllers/newpatient.js"></script>
+        <script src="scripts/controllers/newdoctor.js"></script>
+        <script src="scripts/controllers/hc.js"></script>
+        <script src="scripts/controllers/studies/citology.js"></script>
+        <script src="scripts/controllers/studies/androscopy.js"></script>
+        <script src="scripts/controllers/studies/colposcopy.js"></script>
+        <script src="scripts/controllers/studies/histeroscopy.js"></script>
+        <script src="scripts/controllers/studies/histopatology.js"></script>
+        <script src="scripts/controllers/studies/specials.js"></script>
+        <script src="scripts/controllers/studies/inmuno.js"></script>
+        <script src="scripts/controllers/hc/general.js"></script>
+        <script src="scripts/controllers/hc/face.js"></script>
+        <script src="scripts/controllers/hc/legs.js"></script>
+        <script src="scripts/controllers/hc/hair.js"></script>
+        <script src="scripts/directives/studies.js"></script>
+        <script src="scripts/directives/hc.js"></script>
+        <!-- endbuild -->
+        <script src="scripts/textAngular/textAngular-sanitize.min.js"></script>
+        <script src="scripts/textAngular/textAngular-rangy.min.js"></script>
+        <script src="scripts/textAngular/textAngular.min.js"></script>
+
+        <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="dcbogjxzws049sj"></script>
+  </body>
+</html>
+
+<script type="text/ng-template" id="selectdoctor.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Selección de doctor</h3>
+    </div>
+    <div class="modal-body">
+      <label class="control-label">Nombre:</label>
+      <input type="text" ng-model="selectedDoctor" class="form-control"
+      typeahead="doctor as doctor.name for doctor in getDoctors($viewValue)"
+      typeahead-min-length="2"
+      ></input>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Aceptar</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="selectpatient.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Selección de paciente</h3>
+    </div>
+    <div class="modal-body">
+      <label class="control-label">Nombre:</label>
+      <input type="text" ng-model="selectedPatient" class="form-control"
+      typeahead="patient as patient.name for patient in getPatients($viewValue) | limitTo:20"
+      typeahead-min-length="2"
+      ></input>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Aceptar</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="confirmdialog.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{dialog.title}}</h3>
+    </div>
+    <div class="modal-body">
+      {{dialog.message}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Sí</button>
+        <button class="btn btn-warning" ng-click="cancel()">No</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="requestuser.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Recuperar contraseña</h3>
+    </div>
+    <div class="modal-body">
+      <label class="control-label" for="useremail">Capture su correo electrónico:</label>
+      <input type="email" class="form-control" ng-model="useremail" id="useremail" name="useremail" placeholder="Correo electrónico de usuario"></input>
+        <div class="alert alert-danger" role="alert" ng-show="message">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          {{message}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Aceptar</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="savetemplate.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Guardar machote citológico</h3>
+    </div>
+    <div class="modal-body">
+      <label class="control-label" for="templateKey">Capture identificador del machote:</label>
+      <input type="text" class="form-control" ng-model="key" id="key" name="key" placeholder="Clave para identificar al machote citológico"></input>
+        <div class="alert alert-danger" role="alert" ng-show="message">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          {{message}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Aceptar</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="imagesdialog.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{dialog.title}}</h3>
+    </div>
+    <div class="modal-body">
+      <div class="container-dlg-slider">
+          <div class="imgSlider-btnPrev"><a href="" ng-show="currentIndex > 0" ng-click="moveSlider(-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></div>
+          <div class="imgSlider-btnNext"><a href="" ng-show="currentIndex < slides.length - 1" ng-click="moveSlider(1)"><span class="glyphicon glyphicon-chevron-right"></span></a></div>
+            <span>{{userMessage}}</span>
+          <div class="imgSlider-body">
+            <img src="{{currentLink}}">
+          </div>
+      </div>
+      <textarea rows="2" class="notesImage form-control" ng-show="currentLink" ng-model="slides[currentIndex].text"></textarea>
+    </div>
+    <div class="modal-footer">
+        <div class="imgSlider-btnDelete"><a href="" ng-show="currentLink" ng-click="deleteCurrent()"><span class="glyphicon glyphicon-trash"></span></a></div>
+        <button class="btn btn-default" ng-click="dropboxChooser()">Tomar de dropbox</button>
+        <button class="btn btn-default" ng-click="ok()">Guardar</button>
+        <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+    </div>
+</script>

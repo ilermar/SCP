@@ -1,0 +1,30 @@
+<div class="formheader"><h3>Panel de avisos</h3></div>
+<hr/>
+<div class="panel panel-default mainpanel-studyList" ng-show="isMainDoctor">
+  	<div class="panel-heading">Estudios por revisar</div>
+	  <table class="table">
+	  	<thead>
+		  	<tr>
+			    <th>Fecha de registro</th>
+			    <th>Tipo estudio principal</th>
+			    <th>Paciente</th>
+			    <th>Doctor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="" ng-repeat="x in studyList" ng-dblclick="editStudy(x.id)">
+				<td>{{x.register_date}}</td>
+				<td>{{getStudyName(x.type)}}</td>
+				<td>{{x.patient_name}}</td>
+				<td>{{x.doctor_name}}</td>
+			</tr>
+		</tbody>
+	  </table>
+</div>
+<div class="panel panel-default mainpanel-rememberList">
+  	<!-- Default panel contents -->
+  	<div class="panel-heading">Recordatorios</div>
+  	<ul class="panel-body class="list-group"" ng-repeat="x in rememberList">
+  		<li class="list-group-item">{{x.reminder_date}}<br/>{{x.notes}}</li>
+  	</ul>
+</div>

@@ -1,0 +1,101 @@
+<div>
+  <alert type="{{alertType}}" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</alert>
+</div>
+<div class="container">
+    <div class="formheader">
+      <h3 class=""><span ng-click="filterSelection=true" ng-show="!filterSelection" class="btn btn-default glyphicon glyphicon-filter"></span>&nbsp;{{titleForm}}</h3>
+      Use los filtros para simplicar su búsqueda. Ningún filtro es obligatorio
+    </div>
+    <div ng-show="filterSelection">
+        <form role="form">
+          <div class="form-group ">
+            <label for="formObject.registerDateIni" class="col-sm-3 control-label ">Fecha de registro:</label>
+            <div class="scp-row">
+              <div class="col-sm-9 scp-row" >
+                <div class="row">
+                  <div class="col-md-7">
+                    <p class="input-group">
+                      <span class="input-group-btn">
+                        <span class="btn disabled">&nbsp;Entre&nbsp;</span> 
+                      </span> 
+                      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" ng-model="formObject.registerDateIni" id="formObject.registerDateIni" is-open="calendar_0" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 0)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                      </span> 
+                      <span class="input-group-btn">
+                        <span class="btn disabled">&nbsp;y&nbsp;</span> 
+                      </span> 
+                      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" id="formObject.registerDateEnd" ng-model="formObject.registerDateEnd" is-open="calendar_1" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 1)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                      </span> 
+                      </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group ">
+            <label for="formObject.rememberDateIni" class="col-sm-3 control-label ">Fecha de recordatorio:</label>
+            <div class="scp-row">
+              <div class="col-sm-9 scp-row" >
+                <div class="row">
+                  <div class="col-md-7">
+                    <p class="input-group">
+                      <span class="input-group-btn">
+                        <span class="btn disabled">&nbsp;Entre&nbsp;</span> 
+                      </span> 
+                      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" id="formObject.rememberDateIni" ng-model="formObject.rememberDateIni" is-open="calendar_2" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 2)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                      </span> 
+                      <span class="input-group-btn">
+                        <span class="btn disabled">&nbsp;y&nbsp;</span> 
+                      </span> 
+                      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" id="formObject.rememberDateEnd" ng-model="formObject.rememberDateEnd" is-open="calendar_3" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 3)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                      </span> 
+                      </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group ">
+            <label for="formObject.notes" class="col-sm-3">Notas:</label>
+            <div class="col-sm-9 scp-row"><textarea class="form-control notesBox" id="formObject.notes" ng-model="formObject.notes" placeholder="Texto a buscar"></textarea></div>
+          </div>
+          <div class="form-group text-right">
+                <div class="col-sm-12 scp-row"><button ng-click="search(formObject)" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+
+          </div>
+        </form>
+      </div>
+      <div ng-show="!filterSelection && !working">
+          <div class=" panel panel-default" >
+              <table  class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Fecha de registro</th>
+                          <th>Fecha de recordatorio</th>
+                          <th>Notas</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr cursor="pointer" ng-class="{selected: row.id === selectedObject.id}" ng-repeat="row in objectList" ng-click="selectObject(row)" ng-dblclick="edit(row.id)">
+                          <td>{{row.regDate}}</td>
+                          <td>{{row.remDate}}</td>
+                          <td>{{row.notes}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="form-group" ng-show="selectedObject.id">
+              <div class="col-sm-12 scp-row text-right">
+                <button ng-click="delete(formObject, selectedObject.id, 'Eliminar recordatorio', '')" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>&nbsp;Eliminar</button>
+                <button ng-click="edit(selectedObject.id)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Editar</button>
+              </div>
+          </div>
+      </div>
+</div>

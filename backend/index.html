@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <link href="css/main.css" rel="stylesheet">
+
+	<title>Api para el SCP</title>
+</head>
+<body>
+	<section>
+		<div class="half">
+			<article>
+				Log-In/Out
+				<div class="requestData">
+					<input type="text" id='l_email' placeholder='email/user'>
+					<input type="text" id='l_password' placeholder='password'>
+
+				</div>							
+				<button id="btn_login">LogIn</button>
+				<button id="btn_logout">LogOut</button>
+				<div class="requestData"><br>
+					Change password
+					<input type="text" id='chemail' placeholder='email'>
+					<input type="text" id='cpwd' placeholder='current password'>
+					<input type="text" id='npwd' placeholder='new password'>
+				</div>
+				<button id="btn_chpwd">Change pwd</button>
+			</article>
+			<article>
+				Ejemplo de Usuarios
+				<div class="requestData">
+					<input type="text" id='user_id' placeholder='User ID'>
+					<br>
+					<input type="text" id='u_profile' placeholder='profile'>
+					<input type="text" id='u_name' placeholder='name'>
+					<input type="text" id='u_email' placeholder='email'>
+					<input type="text" id='u_password' placeholder='password'>
+					<input type="text" id='u_phone_number' placeholder='phone_number'>
+					<input type="text" id='u_last_login' placeholder='last_login'>
+					<input type="text" id='u_last_change_pwd' placeholder='last_change_pwd'>
+					<input type="text" id='u_patient_id' placeholder='patiend_id'>
+					<input type="text" id='u_doctor_id' placeholder='doctor_id'>
+					<br>
+					Limits
+					<input type="text" id='u_bottom_row' placeholder='bottom'>
+					<input type="text" id='u_top_row' placeholder='top'>
+				</div>							
+				<button id="btn_users">Get</button>
+				<button id="btn_users_all">Get All</button>
+				<button id="btn_users_post">Post</button>
+				<button id="btn_users_put">Actualizar PUT</button>				
+				<button id="btn_users_del">Eliminar</button>
+			</article>
+			<article>
+				Ejemplo de Pacientes
+				<div class="requestData">
+					<input type="checkbox" id="p_auto" name="auto" >
+					<input type="text" id='patient_id' placeholder='Patient ID'>
+					<br>
+					<input type="text" id='p_name' placeholder='name'>
+					<input type="text" id='p_birthdate' placeholder='birthdate'>
+					<input type="text" id='p_address' placeholder='address'>
+					<input type="text" id='p_city' placeholder='city'>
+					<input type="text" id='p_state' placeholder='state'>
+					<input type="text" id='p_phone_number_1' placeholder='phone_number_1'>
+					<input type="text" id='p_phone_number_2' placeholder='phone_number_2'>
+					<input type="text" id='p_phone_number_3' placeholder='phone_number_3'>
+					<input type="text" id='p_email' placeholder='email'>
+					<br>
+					Limits
+					<input type="text" id='p_bottom_row' placeholder='bottom'>
+					<input type="text" id='p_top_row' placeholder='top'>
+				</div>							
+				<button id="btn_patients">Get</button>
+				<button id="btn_patients_all">Get All</button>
+				<button id="btn_patients_post">Post</button>
+				<button id="btn_patients_put">Actualizar PUT</button>				
+				<button id="btn_patients_del">Eliminar</button>
+			</article>
+			<article>
+				Ejemplo de Doctores
+				<div class="requestData">
+					<input type="checkbox" id="d_auto" name="auto" >
+					<input type="text" id='doctor_id' placeholder='Doctor ID'>
+					<br>
+					<input type="text" id='d_name' placeholder='name'>
+					<input type="text" id='d_birth_date' placeholder='birth_date'>
+					<input type="text" id='d_address' placeholder='address'>
+					<input type="text" id='d_city' placeholder='city'>
+					<input type="text" id='d_state' placeholder='state'>
+					<input type="text" id='d_phone_number_1' placeholder='phone_number_1'>
+					<input type="text" id='d_phone_number_2' placeholder='phone_number_2'>
+					<input type="text" id='d_phone_number_3' placeholder='phone_number_3'>
+					<input type="text" id='d_fax' placeholder='fax'>
+					<input type="text" id='d_email' placeholder='email'>
+					<input type="text" id='d_specialty' placeholder='specialty'>
+					<br>
+					Limits
+					<input type="text" id='d_bottom_row' placeholder='bottom'>
+					<input type="text" id='d_top_row' placeholder='top'>
+				</div>							
+				<button id="btn_doctors">Get</button>
+				<button id="btn_doctors_all">Get All</button>
+				<button id="btn_doctors_post">Post</button>
+				<button id="btn_doctors_put">Actualizar PUT</button>				
+				<button id="btn_doctors_del">Eliminar</button>
+			</article>
+			<article>
+				Datos de configuración
+				<div class="requestData">
+					<input type="text" id='smtp_server' placeholder='smtp_server'>
+			        <input type="text" id='port' placeholder='port'>
+			        <input type="text" id='use_ssl' placeholder='use_ssl'>
+			        <input type="text" id='user' placeholder='user'>
+			        <input type="text" id='password' placeholder='password'>
+				</div>							
+				<button id="btn_settings">Get</button>
+				<button id="btn_settings_upd">Update</button>
+			</article>
+			<article>
+				Ejemplo de Recordatorios
+				<div class="requestData">
+					<input type="text" id='reminder_id' placeholder='reminder ID'>
+
+					<input type="text" id='reminder_date' placeholder='fecha en formato dd/mm/yyyy'>
+					<input type="text" id='r_notes' placeholder='Notes'>
+					<br>
+					Get All
+					<input type="text" id='register_date_start' placeholder="register_date_start en formato dd/mm/yyyy">
+					<input type="text" id='register_date_end' placeholder="register_date_end en formato dd/mm/yyyy">
+					<input type="text" id='reminder_date_start' placeholder="reminder_date_start en formato dd/mm/yyyy">
+					<input type="text" id='reminder_date_end' placeholder="reminder_date_end en formato dd/mm/yyyy">
+					<input type="text" id='ra_notes' placeholder="notes">
+				</div>							
+				<button id="btn_reminders">Get</button>
+				<button id="btn_reminders_post">Post</button>
+				<button id="btn_reminders_all">Get All</button>
+				<button id="btn_reminders_del">Eliminar</button>
+			</article>
+			
+			<article>
+				Ejemplo de Clínicas
+				<div class="requestData">
+					<input type="text" id='clinic_id' placeholder='Clinic ID'>
+					<br>
+					<input type="text" id='name' placeholder='name'>
+					<input type="text" id='address' placeholder='address'>
+					<input type="text" id='city' placeholder='city'>
+					<input type="text" id='state' placeholder='state'>
+					<input type="text" id='phone_number' placeholder='phone_number'>
+					<input type="text" id='email' placeholder='email'>
+					<input type="text" id='fax' placeholder='fax'>
+					<input type="text" id='notes' placeholder='notes'>
+					<br>
+					Limits
+					<input type="text" id='clinic_bottom_row' placeholder='bottom'>
+					<input type="text" id='clinic_top_row' placeholder='top'>
+				</div>							
+				<button id="btn_clinics">Get</button>
+				<button id="btn_clinics_all">Get All</button>
+				<button id="btn_clinics_post">Post</button>
+				<button id="btn_clinics_put">Actualizar PUT</button>				
+				<button id="btn_clinics_del">Eliminar</button>
+			</article>
+		</div>
+		<div class="half" id="result">
+			<!-- Aquí se mostraran lso resultados de las peticiones-->
+			<div class="url">
+				URL: <span></span>
+			</div>
+			<div class="data">
+				Ejemplo de petición
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<form role="form" name="htmlForm">
+  <div class="container" ng-show="true">
+    <div class="formheader">
+      <h3 class="">Historia clínica</h3>
+      {{patientName}} ({{patientAge}} años)<br/>
+      <a href="" ng-click="backToStudy()" ng-show="fromStudy"><span class="glyphicon glyphicon-arrow-left"></span> Regresar a estudio</a>
+      <a href="" ng-click="backToPatient()" ng-show="fromPatient"><span class="glyphicon glyphicon-arrow-left"></span> Regresar a paciente</a>
+    </div>
+      <!--Botones tabs-->
+      <div  class="btn-group hc-tabs">
+        <button type="button" class="btn btn-default {{tabActive === 1 ? 'hc-tabs-selected' : ''}}" ng-click="selectTab(1)" >General</button>
+        <button type="button" class="btn btn-default {{tabActive === 2 ? 'hc-tabs-selected' : ''}}" ng-click="selectTab(2)" >Rostro</button>
+        <button type="button" class="btn btn-default {{tabActive === 3 ? 'hc-tabs-selected' : ''}}" ng-click="selectTab(3)" >Piernas</button>
+        <button type="button" class="btn btn-default {{tabActive === 4 ? 'hc-tabs-selected' : ''}}" ng-click="selectTab(4)" >Cabello</button>
+      </div>
+      <div id="hc-tab-content" ng-show="dataReady">
+        <hcgeneral ng-show="tabActive === 1" info="medrecord.general"></hcgeneral>
+        <hcface ng-show="tabActive === 2" info="medrecord.face"></hcface>
+        <hclegs ng-show="tabActive === 3" info="medrecord.legs"></hclegs>
+        <hchair ng-show="tabActive === 4" info="medrecord.hair"></hchair>
+      </div>
+      <!--Botón guardar-->
+      <div class="col-sm-12 scp-row text-right hc-buttons" >
+        <button class="btn btn-default" ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+        <button class="btn btn-default" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button>
+      </div>
+    </div>
+</form>

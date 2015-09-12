@@ -1,0 +1,22 @@
+body{
+	font-size: 16px;
+}
+.half{
+	border: 1px solid black;
+	display: inline-block;
+	padding: 0.5em;
+	width: 48%;
+}
+
+article{
+	border: 1px dotted peru;
+	padding: 0.5em;
+	margin-bottom:  0.8em;
+}
+article input{
+	width: 100%;
+	margin: 0.3em;
+}
+article button{
+	margin: 0.1em 0.5em; 
+}

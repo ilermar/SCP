@@ -1,0 +1,48 @@
+  <div ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">EDITAR ESTUDIO [{{study.key_prefix}}-{{study.key_number | zpad:4}}]</h3>
+      <div class="">
+        <div class="base-study-info">
+          <label >Paciente:&nbsp;</label>
+          <a href="" tooltip="Haga click para ver historia clínica" ng-click="showHC()">{{study.patient_name}} {{study.age ? '(' + study.age + ' años)' : ''}}</a>
+          <br/><label >Doctor:&nbsp;</label>{{study.doctor_name}}
+        </div>
+        <div class="base-study-info">
+          <label >Observaciones:&nbsp;</label>{{study.notes}}
+        </div>
+      </div>
+    </div>
+    <!--Botones tabs-->
+    <div  class="btn-group study-tabs">
+      <button type="button" ng-repeat="tab in tabs" class="btn btn-default {{tab.active ? 'study-tabs-selected' : ''}}" ng-click="selectTab(tab, $index)" >{{getStudyName(tab.type)}}</button>
+      <div class="btn-group" dropdown >
+        <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ><i class="glyphicon glyphicon-plus"></i></button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-show="study.type === '2' || study.type === '4'"><a href="" ng-click="newTab('1');">Citología</a></li>
+          <li ng-show=""><a href="" ng-click="newTab('2');">Androscopía</a></li>
+          <li ng-show=""><a href="" ng-click="newTab('4');">Colposcopía</a></li>
+          <li ng-show=""><a href="" ng-click="newTab('8');">Histeroscopía</a></li>
+          <li ng-show="study.type === '2' || study.type === '4'"><a href="" ng-click="newTab('16');">Histopatología</a></li>
+          <li ng-show="study.type === '2' || study.type === '4' || study.type === '16'"><a href="" ng-click="newTab('64');">Inmunológicos</a></li>
+          <li ng-show="true"><a href="" ng-click="newTab('32');">Especiales</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--Espacio para el formulario del estudio activo-->
+    <div id="study-tab-content">
+      <citology  ng-show="currentTab.type === '1'" info="labtests.citology"></citology>
+      <androscopy  ng-show="currentTab.type === '2'" info="labtests.androscopy"></androscopy>
+      <colposcopy  ng-show="currentTab.type === '4'" info="labtests.colposcopy"></colposcopy>
+      <histeroscopy  ng-show="currentTab.type === '8'" info="labtests.histeroscopy"></histeroscopy>
+      <histopatology  ng-show="currentTab.type === '16'" info="labtests.histopatology"></histopatology>
+      <specials  ng-show="currentTab.type === '32'" info="labtests.specials"></specials>
+      <inmuno ng-show="currentTab.type === '64'" info="labtests.inmuno"></inmuno>
+    </div>
+    <!--Botón guardar-->
+    <div class="col-sm-12 scp-row text-right study-buttons" >
+      <button class="btn btn-default" ng-click="reset()" ng-show="study.main_json_data"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+      <button class="btn btn-default" ng-click="buildPrintView()"><span class="glyphicon glyphicon-print"></span>&nbsp;Imprimir</button>
+      <button class="btn btn-default" ng-click="showImages()"><span class="glyphicon glyphicon-picture"></span>&nbsp;Imágenes</button>
+      <button class="btn btn-default" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button>
+    </div>
+  </div>

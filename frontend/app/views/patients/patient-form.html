@@ -1,0 +1,97 @@
+<form role="form" name="htmlForm">
+  <div class="container" ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">{{titleForm}}</h3>
+      *Campos obligatorios
+    </div>
+      <div class="form-group">
+        <label for="formObject.name" class="col-sm-3 control-label">*Nombre completo:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.name" id="formObject.name"place-holder="Nombre completo del paciente" ng-maxlength="100" required  />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.birth_date" class="col-sm-3 control-label">Fecha de nacimiento:</label>
+        <div class="col-sm-9 scp-row" >
+          <div class="row">
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" readOnly="true" ng-model="formObject.birth_date" is-open="opened" datepicker-options="dateOptions" close-text="Cerrar" current-text="Hoy" clear-text="Borrar"/>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </p>
+              </div>
+          </div>
+        </div> 
+      </div>
+      <div class="form-group">
+        <label for="formObject.address" class="col-sm-3 control-label">Dirección:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.address" id="formObject.address" ng-maxlength="300" place-holder="Colonia, calle y número"/></div>
+    	</div>
+      <div class="form-group">
+        <label for="formObject.city" class="col-sm-3 control-label">Ciudad:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.city" id="formObject.city" ng-maxlength="100" place-holder="Ciudad de residencia"/></div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.state" class="col-sm-3 control-label">Estado:</label>
+        <div class="col-sm-9 scp-row" ><select class="form-control" ng-model="formObject.state" id="formObject.state">
+          <option value="">Seleccione estado</option>
+          <option value="1">Aguasacalientes</option>
+          <option value="2">Baja California Sur</option>
+          <option value="3">Baja California Norte</option>
+          <option value="4">Campeche</option>
+          <option value="5">Chiapas</option>
+          <option value="6">Chihuahua</option>
+          <option value="7">Coahuila</option>
+          <option value="8">Colima</option>
+          <option value="9">Distrito Federal</option>
+          <option value="10">Durango</option>
+          <option value="11">Estado de México</option>
+          <option value="12">Guanajuato</option>
+          <option value="13">Guerrero</option>
+          <option value="14">Hidalgo</option>
+          <option value="15">Jalisco</option>
+          <option value="16">Michoacán</option>
+          <option value="17">Morelos</option>
+          <option value="18">Nayarit</option>
+          <option value="19">Nuevo León</option>
+          <option value="20">Oaxaca</option>
+          <option value="21">Puebla</option>
+          <option value="22">Querétaro</option>
+          <option value="23">Quintana Roo</option>
+          <option value="24">San Luis Potosí</option>
+          <option value="25">Sinaloa</option>
+          <option value="26">Sonora</option>
+          <option value="27">Tabasco</option>
+          <option value="28">Tamaulipas</option>
+          <option value="29">Tlaxcala</option>
+          <option value="30">Veracruz</option>
+          <option value="31">Yucatán</option>
+          <option value="32">Zacatecas</option>
+        </select></div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.phone_number_1" class="col-sm-3 control-label">Teléfono de casa:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.phone_number_1" id="formObject.phone_number_1" ng-maxlength="15" place-holder="XXXXXXXXXX"/></div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.phone_number_2" class="col-sm-3 control-label">Teléfono de oficina/trabajo:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.phone_number_2" id="formObject.phone_number_2" ng-maxlength="15" place-holder="XXXXXXXXXX"/></div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.phone_number_3" class="col-sm-3 control-label">Celular:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.phone_number_3" id="formObject.phone_number_3" ng-maxlength="15" place-holder="XXXXXXXXXX"/></div>
+      </div>
+      <div class="form-group">
+        <label for="formObject.email" class="col-sm-3 control-label">Correo electrónico:</label>
+        <div class="col-sm-9 scp-row" ><input type="text" class="form-control" ng-model="formObject.email" id="formObject.email" ng-maxlength="150" place-holder="paciente@dominio.com"/></div>
+      </div>
+      <div class="form-group text-right">
+        <div class="col-sm-12 scp-row">
+          <button class="btn btn-default" ng-click="reset()" ng-show="formObject && formObject.id" ng-disabled="working"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Restablecer</button>
+          <button class="btn btn-default" ng-click="save(formObject)" ng-disabled="working"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Guardar</button>
+          <button ng-click="showHC(selectedObject.id)" class="btn btn-default" ng-show="formObject && formObject.id" ng-disabled="working"><span class="glyphicon glyphicon-heart"></span>&nbsp;Historia Clínica</button>
+        </div>
+      </div>
+    </div>
+</form>

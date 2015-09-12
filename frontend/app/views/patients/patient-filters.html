@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="formheader">
+        <h3 class=""><span ng-click="filterSelection=true" ng-show="!filterSelection" class="btn btn-default glyphicon glyphicon-filter"></span>&nbsp;{{titleForm}}</h3>
+        Use los filtros para simplicar su búsqueda. Ningún filtro es obligatorio
+    </div>
+    <div ng-show="filterSelection">
+        <form role="form">
+        <div class="form-group">
+          <label for="formObject.name" class="col-sm-3 control-label">Nombre:</label>
+          <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.name" ng-model="formObject.name" placeholder="Cualquier parte del nombre"/></div>
+        </div>
+        <div class="form-group">
+          <label for="formObject.state" class="col-sm-3 control-label">Estado:</label>
+          <div class="col-sm-9 scp-row" ><select class="form-control" id="formObject.state" ng-model="formObject.state">
+            <option value="">Seleccione un estado</option>
+            <option value="1">Aguasacalientes</option>
+            <option value="2">Baja California Sur</option>
+            <option value="3">Baja California Norte</option>
+            <option value="4">Campeche</option>
+            <option value="5">Chiapas</option>
+            <option value="6">Chihuahua</option>
+            <option value="7">Coahuila</option>
+            <option value="8">Colima</option>
+            <option value="9">Distrito Federal</option>
+            <option value="10">Durango</option>
+            <option value="11">Estado de México</option>
+            <option value="12">Guanajuato</option>
+            <option value="13">Guerrero</option>
+            <option value="14">Hidalgo</option>
+            <option value="15">Jalisco</option>
+            <option value="16">Michoacán</option>
+            <option value="17">Morelos</option>
+            <option value="18">Nayarit</option>
+            <option value="19">Nuevo León</option>
+            <option value="20">Oaxaca</option>
+            <option value="21">Puebla</option>
+            <option value="22">Querétaro</option>
+            <option value="23">Quintana Roo</option>
+            <option value="24">San Luis Potosí</option>
+            <option value="25">Sinaloa</option>
+            <option value="26">Sonora</option>
+            <option value="27">Tabasco</option>
+            <option value="28">Tamaulipas</option>
+            <option value="29">Tlaxcala</option>
+            <option value="30">Veracruz</option>
+            <option value="31">Yucatán</option>
+            <option value="32">Zacatecas</option>
+          </select></div>
+        </div>
+        <div class="form-group">
+          <label for="formObject.phone_number" class="col-sm-3 control-label">Teléfono:</label>
+          <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.phone_number" ng-model="formObject.phone_number" placeholder="Se hará la búsqueda en cualquiera de los teléfonos registrados"/></div>
+        </div>
+        <div class="form-group">
+          <label for="formObject.email" class="col-sm-3 control-label">Correo electrónico:</label>
+          <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.email" ng-model="formObject.email" placeholder="Correo electrónico (o una parte)"/></div>
+        </div>
+        <div class="form-group text-right">
+          <div class="col-sm-12 scp-row"><button ng-click="search(formObject)" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+
+        </div>
+        </form>
+    </div>
+    <div ng-show="!filterSelection && !working">
+        <div class=" panel panel-default" >
+            <table  class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr cursor="pointer" ng-class="{selected: row.id === selectedObject.id}" ng-repeat="row in objectList" ng-click="selectObject(row)" ng-dblclick="edit(row.id)">
+                        <td>{{row.name}}</td>
+                        <td>{{row.age}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group" ng-show="selectedObject.id">
+              <div class="col-sm-12 scp-row text-right">
+                <button ng-click="delete(formObject, selectedObject.id, 'Eliminar paciente', ' (' + selectedObject.name + ')' )" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>&nbsp;Eliminar</button>
+                <button ng-click="edit(selectedObject.id)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Editar</button>
+                <button ng-click="showHC(selectedObject.id)" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span>&nbsp;Historia Clínica</button>
+              </div>
+          </div>
+    </div>
+</div>

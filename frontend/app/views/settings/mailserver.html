@@ -1,0 +1,47 @@
+<form role="form" name="htmlForm" id="htmlForm" novalidate="true">
+  <div class="container" ng-show="dataReady">
+    <div class="formheader">
+      <h3 class="">SERVIDOR DE CORREO</h3>
+      *Campos obligatorios
+    </div>
+    <div class="form-group">
+      <label for="formObject.smtp_server" class="col-sm-3 control-label">*Servidor SMTP:</label>
+      <div class="col-sm-9 scp-row" >
+        <input type="text" class="form-control" id="formObject.smtp_server" ng-model="formObject.smtp_server" ng-maxlength="100" placeholder="smtp.gmail.com" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.port" class="col-sm-3 control-label">*Puerto:</label>
+      <div class="col-sm-9 scp-row" >
+        <input type="number" class="form-control" id="formObject.port" ng-model="formObject.port" placeholder="465" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.use_ssl" class="col-sm-3 control-label">Usar SSL:</label>
+      <div class="col-sm-9 scp-row" >
+        <input type="checkbox" id="formObject.use_ssl" ng-model="formObject.use_ssl"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.user" class="col-sm-3 control-label">*Usuario:</label>
+      <div class="col-sm-9 scp-row" ><input type="text" class="form-control" id="formObject.user" ng-model="formObject.user" ng-maxlength="50" placeholder="usuario de servidor de correo" required/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.password" class="col-sm-3 control-label">*Contraseña:</label>
+      <div class="col-sm-9 scp-row" ><input type="password" class="form-control" id="formObject.password" ng-model="formObject.password" ng-maxlength="50" placeholder="password de servidor de correo" required/></div>
+    </div>
+    <div class="form-group">
+      <label for="formObject.password2" class="col-sm-3 control-label">Repetir contraseña:</label>
+      <div class="col-sm-9 scp-row" ><input type="password" class="form-control" id="formObject.password2" ng-model="formObject.password2" ng-maxlength="50" placeholder="Repita la contraseña del campo anterior"/></div>
+    </div>
+    <div class="form-group text-right">
+        <div class="col-sm-12 scp-row">
+          <button class="btn btn-default" ng-click="reset()">
+            <span class="glyphicon glyphicon-repeat" ng-disabled="working"></span>&nbsp;Restablecer
+          </button>
+          <button class="btn btn-default" ng-click="save(formObject)">
+            <span class="glyphicon glyphicon-floppy-disk" ng-disabled="working"></span>&nbsp;Guardar</button>
+        </div>
+      </div>
+    </div>
+</form>
