@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<head>
+		<link rel="stylesheet" href="../styles/main.css">
+
+		<title>Histopatología</title>
+		<script type="text/javascript">
+			var formData = {
+				"header" : {
+					"prefix" : "BP",
+					"number" : "00775",
+					"year" : 15,
+					"studyDate" : "25/Sept/2015",
+					"patientName" : "Portales Martínez Eliana",
+					"patientAge" : 25,
+					"sentPart" : "Quiste ovárico",
+					"associatedDoctor" : "Dr. Alejandro Jonguitud Acosta"
+				},
+				"body" : {
+					"macroDesc" : "Se recibe frasco con formol, etiquetado con el nombre de la paciente Eliana Martínez  Portales, contiene 2 fragmentos irregulares de tejido, etiquetados como capsula ovárica izquierda, el mayor de ellos mide 9 x 2 cm, el menor 4 x 2cms. Que corresponde a pared de quiste, está  en promedio mide 2mm de espesor, con áreas ligeramente papilares.",
+					"microDesc" : "Se observa  pared de quiste la cual esta revestida por células columnares mucinosas, en monofila. No se observan datos de invasión a la lámina propia tumoral. No se identifica ovario residual.",
+					"diagnostic" : "<ul><li><b>Espécimen:</b>Tumor ovárico (cápsula)</li><li><b>Lateralidad:</b>izquierda</li><li><b>Tipo histológico</b>Cistadenoma mucinoso</li><li><b>Clasificación histológica:</b>Benigno</li></ul>"
+				}, 
+				"owner" : "Dr. Sergio Ramos Reyes"
+			};
+
+		</script>
+	</head>
+	<body>
+		<header>
+			<p class="right_align studyId"><span id="studyPrefix"></span>-<span id="studyNumber"></span>-<span id="studyYear"></span></p>
+			<p class="right_align"><span id="studyDate"></span></p>
+			<p><label>Paciente:</label><span id="patientName"></span></p>
+			<p><label>Edad:</label><span id="patientAge"></span></p>
+			<p id="p_sentPart"><label>Pieza enviada:</label><span id="sentPart"></span></p>
+			<p id="p_associatedDoctor"><label>Médico que envía:</label><span id="associatedDoctor"></span></p>
+		</header>
+		<content>
+			<p class="title_study">ESTUDIO HISTOPATOLOGICO</p>
+			<p id="p_macroDesc"><label>Descripción macroscópica:</label><span id="macroDesc"></span></p>
+			<p id="p_microDesc"><label>Descripción microscópica:</label><span id="microDesc"></span></p>
+			<p id="p_diagnostic"><label>Diagnóstico</label><div id="diagnostic"></div></p>
+		</content>
+		<footer></footer>
+	</body>
+	<script src="../scripts/jquery-1.11.3.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+			$("#studyPrefix").html(formData.header.prefix);
+			$("#studyNumber").html(formData.header.number);
+			$("#studyYear").html(formData.header.year);
+			$("#studyDate").html(formData.header.studyDate);
+
+			$("#patientName").html(formData.header.patientName);
+			$("#patientAge").html(formData.header.patientAge);
+
+			if(formData.header.sentPart){
+				$("#sentPart").html(formData.header.sentPart);
+			}else{
+				$("#p_sentPart").hide();
+			}
+			
+			if(formData.header.associatedDoctor){
+				$("#associatedDoctor").html(formData.header.associatedDoctor);
+			}else{
+				$("#p_associatedDoctor").hide();
+			}
+			
+
+			if(formData.body.macroDesc){
+				$("#macroDesc").html(formData.body.macroDesc);
+			}else{
+				$("#p_macroDesc").hide();
+			}
+
+			if(formData.body.microDesc){
+				$("#microDesc").html(formData.body.microDesc);
+			}else{
+				$("#p_microDesc").hide();
+			}
+
+			if(formData.body.diagnostic){
+				$("#diagnostic").html(formData.body.diagnostic);
+			}else{
+				$("#p_diagnostic").hide();
+			}
+			
+
+			$("footer").html("ATENTAMENTE<br/><br/>" + formData.owner);
+		});
+	</script>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<head>
+		<link rel="stylesheet" href="../styles/main.css">
+
+		<title>Citología</title>
+		<script type="text/javascript">
+			var quealityText = [
+				"Zona de transformación presente",
+				"Zona de transformación ausente",
+				"Insatisfactoria",
+				"Rechazada"
+			];
+
+			var categoryText = [
+				"Negativa para lesión intraepitelial",
+				"Anormalidades celulares epiteliales"
+			];
+
+			var anormality1Text = [
+				"ASC-US",
+				"ASC-H",
+				"LEI de bajo grado - NIC I/VPH",
+				"LEI de alto grado (NIC II-III/CA In Stu)",
+				"LEI de alto grado con sospecha de infibación",
+				"Carcinoma escarrocelular infiltrante"
+			];
+
+			var anormality2Text = [
+				"Células Glandulares Atípicas Sin Ningún Otro Significado",
+				"Células Endocervicales Atípicas Sin Ningún Otro Significado",
+				"Células Endometriales Atípicas Sin Ningún Otro Significado",
+				"Células Endocervicales Atípicas Sospechosas De Neoplasia",
+				"Adenocarcinoma endocervical IN SITU",
+				"Adenocarcinoma endocervical",
+				"Adenocarcinoma endometrial",
+				"Otras Neoplasias Malignas"
+			];
+
+			var microAText = [
+				"Gardnerella Vaginalis",
+				"Trichomonas",
+				"Candida",
+				"Clamydia",
+				"Actinomyces",
+				"Herpes"
+			];
+
+			var otroneoAText = [
+				"Asociados a inflamación",
+				"Asociados a radiación",
+				"Cambios asociados a DIU",
+				"Celulas glandulares post histerectomía",
+				"Atrofia",
+				"Celulas endometriales"
+			];
+
+
+			var formData = {
+				"header" : {
+					"prefix" : "C",
+					"number" : "00775",
+					"year" : 15,
+					"studyDate" : "25/Sept/2015",
+					"patientName" : "Portales Martínez Eliana",
+					"patientAge" : 25,
+					"associatedDoctor" : "Dr. Alejandro Jonguitud Acosta"
+				},
+				"body" : {
+					"quality" : 0,
+					"category" : 1,
+					"anormality1" : 3,
+					"anormality2" : 4,
+					"micro_0" : true,
+					"micro_1" : true,
+					"micro_2" : false,
+					"micro_3" : true,
+					"micro_4" : true,
+					"micro_5" : false,
+					"micro_6" : true,
+					"micro_others" : "otro micro",
+					"otroneo_0" : true,
+					"otroneo_1" : false,
+					"otroneo_2" : true,
+					"otroneo_3" : true,
+					"otroneo_4" : true,
+					"otroneo_5" : true,
+					"otroneo_6" : true,
+					"otroneo_others" : "otro neo"
+				}, 
+				"owner" : "Dr. Paris Ramos Martínez"
+			};
+
+		</script>
+	</head>
+	<body>
+		<header>
+			<p class="right_align studyId"><span id="studyPrefix"></span>-<span id="studyNumber"></span>-<span id="studyYear"></span></p>
+			<p class="right_align"><span id="studyDate"></span></p>
+			<p><label>Paciente:</label><span id="patientName"></span></p>
+			<p><label>Edad:</label><span id="patientAge"></span></p>
+			<p id="p_associatedDoctor"><label>Médico que envía:</label><span id="associatedDoctor"></span></p>
+		</header>
+		<content>
+			<p class="title_study">ESTUDIO CITOLOGICO</p>
+			<p id="p_quality"><label>Calidad de la muestra: </label><span id="quality"></span></p>
+			<p id="p_category"><label>Categorización general: </label><span id="category"></span></p>
+			<p id="p_anormality1"><label>Anorm. en celulas escamosas: </label><span id="anormality1"></span></p>
+			<p id="p_anormality2"><label>Anorm. en celulas glandulares: </label><span id="anormality2"></span></p>
+			<p id="p_micro"><label>Microorganismos: </label><span id="micro"></span></p>
+			<p id="p_otroneo"><label>Otros Hallazgos no neoplasicos: </label><span id="otroneo"></span></p>
+		</content>
+		<footer></footer>
+	</body>
+	<script src="../scripts/jquery-1.11.3.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+			var microsText = "";
+			var otroneoText = "";
+
+			$("#studyPrefix").html(formData.header.prefix);
+			$("#studyNumber").html(formData.header.number);
+			$("#studyYear").html(formData.header.year);
+			$("#studyDate").html(formData.header.studyDate);
+
+			$("#patientName").html(formData.header.patientName);
+			$("#patientAge").html(formData.header.patientAge);
+			
+			if(formData.header.associatedDoctor){
+				$("#associatedDoctor").html(formData.header.associatedDoctor);
+			}else{
+				$("#p_associatedDoctor").hide();
+			}
+			
+
+			if(formData.body.quality){
+				$("#quality").html(qualityText[formData.body.quality]);
+			}else{
+				$("#p_quality").hide();
+			}
+
+			if(formData.body.category){
+				$("#category").html(categoryText[formData.body.category]);
+			}else{
+				$("#p_category").hide();
+			}
+
+			if(formData.body.anormality1){
+				$("#anormality1").html(anormality1Text[formData.body.anormality1]);
+			}else{
+				$("#p_anormality1").hide();
+			}
+
+			if(formData.body.anormality2){
+				$("#anormality2").html(anormality2Text[formData.body.anormality2]);
+			}else{
+				$("#p_anormality2").hide();
+			}
+
+			for(var i = 0; i <= 6 ; i++){
+				if(formData.body["micro_" + i]){
+					if(microsText){
+						microsText = microsText + ", ";
+					}
+					if(i < 6){
+						microsText += microAText[i];
+					}else{
+						microsText += "Otros (" + formData.body.micro_others + ")";
+					}
+					
+				}
+			}
+
+			if(microsText){
+				$("#micro").html(microsText);
+			}else{
+				$("#p_micro").hide();
+			}
+
+			for(var i = 0; i <= 6 ; i++){
+				if(formData.body["otroneo_" + i]){
+					if(otroneoText){
+						otroneoText = otroneoText + ", ";
+					}
+					if(i < 6){
+						otroneoText += otroneoAText[i];
+					}else{
+						otroneoText += "Otros (" + formData.body.otroneo_others + ")";
+					}
+					
+				}
+			}
+
+			if(otroneoText){
+				$("#otroneo").html(otroneoText);
+			}else{
+				$("#p_otroneo").hide();
+			}
+
+			$("footer").html(formData.owner);
+		});
+	</script>
+</html>

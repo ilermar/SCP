@@ -1,290 +1,66 @@
-html{
-
-}
-
 /* Space out content a bit */
 body {
-  padding-top: 5px;
-  padding-bottom: 20px;
+  font-family: Arial;
+  font-size:9pt;
+  padding-top:3.0cm;
+  padding-bottom: 3cm;
+  padding-right: 2cm;
+  padding-left: 2cm;
+  margin:0px;
 }
 
-.alert{
-  margin-top: 20px;
+footer{
+  text-align: center;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 5px;
-  padding-right: 5px;
+.studyId{
+  font-weight: bold;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 30px;
-  padding-bottom: 0px;
-  height: 30px;
-}
-
-.header h6 {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-bottom: 5px;
-  padding-top: 0px;
-}
-
-.sessionblock{
-  position: absolute;
-  font-size: .7em;
+.right_align{
   text-align: right;
-  right:15px;
-  top:60px;
 }
 
-.zagon-logo{
-  position: absolute;
-  top:5px;
-  right: 15px;
+header p{
+  margin-top: 0px;
+  margin-bottom: 0.4cm;
 }
 
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+header{
+  margin-bottom: 1.5cm;
 }
 
-/* Customize container */
-.container {
-  max-width: 100%;
-}
-.container-narrow > hr {
-  margin: 10px 0;
+content{
+  text-align: justify;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 10px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-}
-
-#SystemMenu{
-  width:15em;
-  float:left;
-}
-
-
-.mainview{
-  float: none;
-  margin-left:16em;
-  margin-top: 20px;
-}
-
-.scp-row{
-  margin-bottom: 0.5em;
-}
-
-.system-logo{
-}
-
-.system-title{
-  position: absolute;
-  top: 5px;
-  padding-left: 60px;
-}
-
-.container {
-    width: 100%;
-}
-
-tr.selected{
-  background-color: #E8E8E8;
-  font-weight: bold;
-}
-
-tr{
-  cursor: pointer;
-}
-
-.version-legend{
-  margin-top:2em;
-  color:#B6B6B6;
-}
-
-.study-tabs-selected, .hc-tabs-selected{
-  font-weight: bold;
-  background-color: #ddd;
-}
-
-#study-tab-content, #hc-tab-content{
-  padding-top: 1em;
-  margin-top: -1px;
-  margin-left: 5px;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-color:#ccc;
-}
-
-.study-buttons, .hc-buttons{
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-color:#ccc; 
-  padding-top:5px;
-}
-
-.hc-section{
-}
-
-.hc-title{
-  color:#555;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color:#ccc;
-  padding-top: 5px;
-}
-
-.hc-body{
-  background-color: #fff;
-}
-
-.study-key{
-  width: 6em;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ddd;
-  border-radius: 4px;
-}
-
-.formheader{
-  margin-bottom: 10px;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px;
-  padding: 5px;
-  padding-bottom: 10px;
-  background-color: #fefefe;
-  border-radius: 6px;
-}
-
-.login-input{
-  margin-top:10px;
-}
-
-.profile-img{
-  background-repeat: no-repeat;
-  background-image: url(/images/logo.png);
-  padding-bottom: 20px;
-}
-
-.imgSlider-btnPrev, .imgSlider-btnNext{
-  width:60px;
-  padding-left: 15px;
-  margin-top: 110px;
-  font-size:20px;
-}
-
-.imgSlider-btnDelete{
-  margin-left: 15px; 
-  padding-top: 5px;
-  font-size:20px;
-  float:left;
-}
-
-.imgSlider-btnPrev{
-  float:left;
-}
-
-.imgSlider-btnNext{
-  float:right;
-}
-
-.imgSlider-body{
-  height: 100%;
+.title_study{
   width: 100%;
   text-align: center;
-  display:block;
-  background-color: #fefefe;
-  padding-top: 10px;
+  font-weight: bold;
+  font-size: 1.4em;
 }
 
-.container-dlg-slider{
-  height: 256px;
+.p_diagnostic{
+  margin-top: 1.0cm; 
 }
 
-.systemAlertContainer{
-  z-index: 1000;
-  margin-left: 16em;
+label{
+  font-weight: bold;
 }
 
-.ng-invalid-required{
-  border-color: red;
+footer{
+  margin-top: 2cm;
 }
 
-.zagonContact{
-
-}
-
-.zagonContact figure{
-
-}
-
-.zagonContact figure img{
-  
-}
-
-.zagonContact figure figcaption{
-  font-weight: bold;  
-}
-
-.zagonContact h4{
-  margin-bottom: 0;
-}
-
-.forgot-password{
-  color:#ABABAB;
-  font-style: italic;
-  cursor: pointer;
-}
-
-.button-login{
-  float:right;
-}
-
-.form-group{
-  line-height: 1.1em;
-}
-
-.legsImage{
-  background-image: url('../images/legs.png');
-  width:450px;
-  height:200px;
-}
-
-.hairImage{
-  background-image: url('../images/hair.png');
-  width:415px;
-  height:250px;
-}
-
-.faceImage{
-  background-image: url('../images/face.png');
-  width:100px;
-  height:135px;
+@media screen{
+  body{
+    width: 21.7cm;
+    height: 27.9cm;
+    border-style:ridge;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
 }
